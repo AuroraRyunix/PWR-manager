@@ -15,10 +15,6 @@ install_java_fedora() {
 
     # Install Oracle JDK 21
     sudo rpm -i jdk-21_linux-aarch64_bin.rpm
-
-    # Set Oracle JDK as the default
-    sudo alternatives --set java /usr/java/jdk-21/bin/java
-    sudo alternatives --set javac /usr/java/jdk-21/bin/javac
 }
 
 # Function to install Java on Red Hat/CentOS
@@ -29,10 +25,6 @@ install_java_redhat() {
 
     # Install Oracle JDK 21
     sudo rpm -i jdk-21_linux-aarch64_bin.rpm
-
-    # Set Oracle JDK as the default
-    sudo alternatives --set java /usr/java/jdk-21/bin/java
-    sudo alternatives --set javac /usr/java/jdk-21/bin/javac
 }
 
 # Function to install Java on Arch Linux
