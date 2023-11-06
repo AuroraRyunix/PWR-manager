@@ -10,13 +10,13 @@ install_java_debian() {
 # Function to install Java on CentOS/RHEL
 install_java_redhat() {
     echo "CentOS/RHEL based system detected. Installing OpenJDK 19..."
-    sudo yum install java-19-openjdk -y
+    sudo yum install jdk-21 -y
 }
 
 # Function to install Java on Fedora
 install_java_fedora() {
     echo "Fedora based system detected. Installing OpenJDK 19..."
-    sudo dnf install java-19-openjdk -y
+    sudo dnf install jdk-21 -y
 }
 
 # Function to install Java on Arch Linux
