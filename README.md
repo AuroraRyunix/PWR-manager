@@ -8,6 +8,7 @@ This script simplifies the installation and management of the PWR Manager servic
 - Automatic update of the service with the user's external IP address.
 - Separate log files for standard output and standard error.
 - Automatically installs the required java version
+- Asks for a password and automatically starts the service
 
 ## Prerequisites
 
@@ -34,7 +35,7 @@ This script simplifies the installation and management of the PWR Manager servic
    sudo sh PWR_manager_installer_updater.sh
    ```
 
-4. Follow the on-screen instructions to set your password. Then restart the service
+4. If the service doesn't restart, manually restart the first time
    ```bash
    sudo systemctl restart PWR_manager
    ```
