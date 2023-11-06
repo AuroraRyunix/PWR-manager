@@ -30,6 +30,9 @@ output_dir="$home_dir/PWR_manager"
 
 # Create the output directory if it doesn't exist
 mkdir -p "$output_dir"
+sudo chmod 0777 "$output_dir"
+touch "$output_dir/out.txt"
+touch "$output_dir/outERROR.txt"
 
 # Download the .jar file and store it in the user's home directory
 sudo -u $SUDO_USER wget -O "$home_dir/PWR_manager/validator.jar" "$jar_url"
