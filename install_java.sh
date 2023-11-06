@@ -11,7 +11,7 @@ install_java_debian() {
 install_java_fedora() {
     echo "Fedora-based system detected. Downloading and installing Oracle JDK 21..."
     # Download Oracle JDK 21 RPM
-    wget https://download.oracle.com/java/21/latest/jdk-21_linux-aarch64_bin.rpm
+    wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.rpm
 
     # Install Oracle JDK 21
     sudo rpm -i jdk-21_linux-aarch64_bin.rpm
@@ -21,7 +21,7 @@ install_java_fedora() {
 install_java_redhat() {
     echo "Red Hat/CentOS based system detected. Downloading and installing Oracle JDK 21..."
     # Download Oracle JDK 21 RPM
-    wget https://download.oracle.com/java/21/latest/jdk-21_linux-aarch64_bin.rpm
+    wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.rpm
 
     # Install Oracle JDK 21
     sudo rpm -i jdk-21_linux-aarch64_bin.rpm
