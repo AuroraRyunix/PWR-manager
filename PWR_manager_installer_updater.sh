@@ -42,7 +42,8 @@ if [ -f "$home_dir/PWR_manager/password.txt" ]; then
 fi
 
 # Prompt the user for a password and store it in password.txt
-read -p "Enter a password for the service: " user_password
+echo -e "\033[1mEnter your PWR Validator Node password please, or leave it blank and manually add it later:\033[0m"
+read -p "Password: " user_password
 echo "$user_password" > "$home_dir/PWR_manager/password.txt"
 
 # Download the .jar file and store it in the user's home directory
@@ -72,9 +73,12 @@ systemctl daemon-reload
 # Enable and start the service
 systemctl enable $service_name
 systemctl start $service_name
+echo -e "\033[1mPlease wait for the systemd service to start.\033[0m"
+sleep 10
+systemctl restart $service_name
+echo -e "\033[1mPWR Manager service has been installed and started with auto-restart on failure.\033[0m"
 
-echo "PWR Manager service has been installed and started with auto-restart on failure."
 
 # Reminder message
-echo "Please make sure to change your password in '$home_dir/PWR_manager/password.txt' and restart the service using 'systemctl restart $service_name'."
-echo "You can find the standard output in the file '$output_dir/out.txt' and the standard error in the file '$output_dir/outERROR.txt'."
+echo -e "\033[1mPlease make sure to change your password in '$home_dir/PWR_manager/password.txt' and restart the service using 'systemctl restart $service_name'.\033[0m"
+echo -e "\033[1mYou can find the standard output in the file '$output_dir/out.txt' and the standard error in the file '$output_dir/outERROR.txt'.\033[0m"
