@@ -51,6 +51,7 @@ Once the script has been run, the PWR Manager service will be installed and star
 - Stop the service: `sudo systemctl stop PWR_manager`
 - Restart the service: `sudo systemctl restart PWR_manager`
 - Check the service status: `sudo systemctl status PWR_manager`
+- ALL FILES ARE UNDER $HOME/PWR_MANAGER
 
 ## Customization
 
