@@ -5,11 +5,13 @@ if [ "$EUID" -ne 0 ]; then
     echo "This script must be run with root privileges for systemd service setup."
     exit 1
 fi
+
 # Check if Java is installed
 if ! command -v java &>/dev/null; then
     echo "Java is not installed. Installing Java..."
     sudo sh install_java.sh
 fi
+
 # Define the URL of the .jar file to download
 jar_url="https://github.com/pwrlabs/PWR-Validator-Node/raw/main/validator.jar"
 
@@ -34,11 +36,17 @@ sudo chmod 0777 "$output_dir"
 touch "$output_dir/out.txt"
 touch "$output_dir/outERROR.txt"
 
+# Check if the password.txt file exists, and if it does, remove it
+if [ -f "$home_dir/PWR_manager/password.txt" ]; then
+    rm "$home_dir/PWR_manager/password.txt"
+fi
+
+# Prompt the user for a password and store it in password.txt
+read -p "Enter a password for the service: " user_password
+echo "$user_password" > "$home_dir/PWR_manager/password.txt"
+
 # Download the .jar file and store it in the user's home directory
 sudo -u $SUDO_USER wget -O "$home_dir/PWR_manager/validator.jar" "$jar_url"
-
-# Create a passwords file (You can customize this as needed)
-sudo -u $SUDO_USER echo "YourPassword" > "$home_dir/PWR_manager/password.txt"
 
 # Create a systemd service unit file
 cat > /etc/systemd/system/$service_name.service <<EOF
@@ -68,5 +76,5 @@ systemctl start $service_name
 echo "PWR Manager service has been installed and started with auto-restart on failure."
 
 # Reminder message
-echo "Please make sure to change your password in '$home_dir/PWR_manager/passwords.txt' and restart the service using 'systemctl restart $service_name'."
+echo "Please make sure to change your password in '$home_dir/PWR_manager/password.txt' and restart the service using 'systemctl restart $service_name'."
 echo "You can find the standard output in the file '$output_dir/out.txt' and the standard error in the file '$output_dir/outERROR.txt'."
