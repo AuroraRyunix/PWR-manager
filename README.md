@@ -61,5 +61,3 @@ Contributions are welcome! Feel free to open an issue or create a pull request.
 
 - Inspired by [PWR Labs](https://github.com/pwrlabs).
 
-
-Customize this template by replacing placeholders like `your-repo`, `Your Name`, and any other details specific to your project. Additionally, you can expand the documentation with more information about the project's features, usage, and customization options.
