@@ -14,7 +14,7 @@ install_java_fedora() {
     wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.rpm
 
     # Install Oracle JDK 21
-    sudo rpm -i jdk-21_linux-aarch64_bin.rpm
+    sudo rpm -i jdk-21_linux-x64_bin.rpm
 }
 
 # Function to install Java on Red Hat/CentOS
@@ -24,7 +24,7 @@ install_java_redhat() {
     wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.rpm
 
     # Install Oracle JDK 21
-    sudo rpm -i jdk-21_linux-aarch64_bin.rpm
+    sudo rpm -i jdk-21_linux-x64_bin.rpm
 }
 
 # Function to install Java on Arch Linux
