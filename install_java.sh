@@ -2,32 +2,43 @@
 
 # Function to install Java on Debian/Ubuntu
 install_java_debian() {
+    echo "Debian/Ubuntu based system detected. Installing OpenJDK 19..."
     sudo apt-get update
-    sudo apt-get install -y default-jre
+    sudo apt-get install openjdk-19-jre -y
 }
 
-# Function to install Java on RHEL/CentOS/Fedora
+# Function to install Java on CentOS/RHEL
 install_java_redhat() {
-    sudo yum install -y java-1.8.0-openjdk
+    echo "CentOS/RHEL based system detected. Installing OpenJDK 19..."
+    sudo yum install java-19-openjdk -y
+}
+
+# Function to install Java on Fedora
+install_java_fedora() {
+    echo "Fedora based system detected. Installing OpenJDK 19..."
+    sudo dnf install java-19-openjdk -y
 }
 
 # Function to install Java on Arch Linux
 install_java_arch() {
-    sudo pacman -S --noconfirm jre8-openjdk
+    echo "Arch Linux detected. Installing OpenJDK 19..."
+    sudo pacman -S jre-openjdk-headless --noconfirm
 }
 
 # Function to determine the Linux distribution and install Java
 install_java() {
     if [ -x "$(command -v java)" ]; then
         echo "Java is already installed."
-    elif [ -x "$(command -v apt-get)" ]; then
+    elif [ -f /etc/debian_version ]; then
         install_java_debian
-    elif [ -x "$(command -v yum)" ]; then
+    elif [ -f /etc/redhat-release ]; then
         install_java_redhat
-    elif [ -x "$(command -v pacman)" ]; then
+    elif [ -f /etc/fedora-release ]; then
+        install_java_fedora
+    elif [ -f /etc/arch-release ]; then
         install_java_arch
     else
-        echo "Unsupported Linux distribution. Please install Java manually."
+        echo "Unsupported system. Please install OpenJDK 19 manually."
         exit 1
     fi
 }
