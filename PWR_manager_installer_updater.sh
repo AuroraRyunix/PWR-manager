@@ -5,7 +5,11 @@ if [ "$EUID" -ne 0 ]; then
     echo "This script must be run with root privileges for systemd service setup."
     exit 1
 fi
-
+# Check if Java is installed
+if ! command -v java &>/dev/null; then
+    echo "Java is not installed. Installing Java..."
+    sudo sh install_java.sh
+fi
 # Define the URL of the .jar file to download
 jar_url="https://github.com/pwrlabs/PWR-Validator-Node/raw/main/validator.jar"
 
