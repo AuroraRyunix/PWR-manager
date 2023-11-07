@@ -1,6 +1,16 @@
 #!/bin/bash
-
+#this is the main installer script that downloads the required updates, java, PWR node validator executable (jar). After this it creates a system.d service that will manage the service. 
 # Check if the script is running with root privileges
+# Preset locations:
+
+# Define the URL of the .jar file to download
+jar_url="https://github.com/pwrlabs/PWR-Validator-Node/raw/main/validator.jar"
+# Define the service name
+service_name="PWR_manager"
+# Define the service description
+service_description="Your PWR Manager Service"
+
+
 if [ "$EUID" -ne 0 ]; then
     echo "This script must be run with root privileges for systemd service setup."
     exit 1
@@ -12,14 +22,9 @@ if ! command -v java &>/dev/null; then
     sudo sh install_java.sh
 fi
 
-# Define the URL of the .jar file to download
-jar_url="https://github.com/pwrlabs/PWR-Validator-Node/raw/main/validator.jar"
 
-# Define the service name
-service_name="PWR_manager"
 
-# Define the service description
-service_description="Your PWR Manager Service"
+
 
 # Get the user's external IP address using a tool like curl
 external_ip=$(sudo -u $SUDO_USER curl -s https://ifconfig.me)
