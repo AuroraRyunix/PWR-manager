@@ -59,6 +59,23 @@ Once the script has been run, the PWR Manager service will be installed and star
 - The script assumes the `java` executable is available. If not, it can be installed using your system's package manager.
 - The location of the service files and output directories can be customized in the script.
 
+## Uninstalling
+
+-unistalling will not remove the node files
+
+   either run:
+   ```bash
+   sudo PWR-manager-REMOVE.sh
+   ```
+   or manually remove the service using:
+   ```bash
+   sudo systemctl stop PWR_manager
+   sudo systemctl disable PWR_manager
+   sudo rm /etc/systemd/system/PWR_manager.service
+   ```
+
+
+
 ## Contributing
 
 Contributions are welcome! Feel free to open an issue or create a pull request.
