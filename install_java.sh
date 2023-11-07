@@ -3,8 +3,11 @@
 # Function to install Java on Debian/Ubuntu
 install_java_debian() {
     echo "Debian/Ubuntu based system detected. Installing OpenJDK 19..."
-    sudo apt-get update
-    sudo apt-get install openjdk-19-jre -y
+    sudo apt-get update -y
+    sudo apt-get install -y
+    wget https://download.oracle.com/java/19/latest/jdk-19_linux-x64_bin.deb
+    sudo apt-get -qqy install ./jdk-19_linux-x64_bin.deb
+
 }
 
 # Function to install Java on Fedora
@@ -30,7 +33,7 @@ install_java_redhat() {
 # Function to install Java on Arch Linux
 install_java_arch() {
     echo "Arch Linux detected. Installing OpenJDK 19..."
-    sudo pacman -S jre-openjdk-headless --noconfirm
+    sudo pacman -S wget jre-openjdk --noconfirm
 }
 
 # Function to determine the Linux distribution and install Java
