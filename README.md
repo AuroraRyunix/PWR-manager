@@ -25,20 +25,24 @@ https://youtu.be/U93-pU9Czeg
    wget https://github.com/AuroraRyunix/PWR-manager/blob/main/PWR_manager_installer_updater.sh
    wget https://github.com/AuroraRyunix/PWR-manager/blob/main/install_java.sh
    ```
-
-2. Make the script executable:
+   or
+   ```bash
+   git clone https://github.com/AuroraRyunix/PWR-manager && cd PWR-manager
+   ```
+   
+3. Make the script executable:
 
    ```bash
    sudo chmod +x PWR_manager_installer_updater.sh
    ```
 
-3. Run the script with root privileges:
+4. Run the script with root privileges:
 
    ```bash
    sudo sh PWR_manager_installer_updater.sh
    ```
 
-4. If the service doesn't restart, manually restart the first time
+5. If the service doesn't restart, manually restart the first time
    ```bash
    sudo systemctl restart PWR_manager
    ```
