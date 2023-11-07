@@ -31,11 +31,6 @@ if ! command -v java &>/dev/null; then
 fi
 
 
-
-
-
-
-
 # Create the output directory if it doesn't exist
 mkdir -p "$output_dir"
 sudo chmod 0777 "$output_dir"
