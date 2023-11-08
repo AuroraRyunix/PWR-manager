@@ -54,12 +54,12 @@ Once the script has been run, the PWR Manager service will be installed and star
 - Stop the service: `sudo systemctl stop PWR_manager`
 - Restart the service: `sudo systemctl restart PWR_manager`
 - Check the service status: `sudo systemctl status PWR_manager`
-- ALL FILES ARE UNDER $HOME/PWR_MANAGER
+- All files are located under `"home directory"/PWR_manager`
 
 ## Customization
 
 - You can customize the JAR file URL, service name, and description in the script.
-- The script assumes the `java` executable is available. If not, it can be installed using your system's package manager.
+- The script assumes the `java` executable is available. If not, it will try to automatically install the corect version.
 - The location of the service files and output directories can be customized in the script.
 
 ## Uninstalling
