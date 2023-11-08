@@ -24,7 +24,7 @@ https://youtu.be/U93-pU9Czeg
 1. Download the script:
 
    ```bash
-   wget https://github.com/AuroraRyunix/PWR-manager/blob/main/PWR_manager_installer_updater.sh
+   wget https://raw.githubusercontent.com/AuroraRyunix/PWR-manager/main/PWR_manager_installer_updater.sh
    ```
    
 3. Make the script executable:
