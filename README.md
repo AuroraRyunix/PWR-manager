@@ -7,15 +7,17 @@ https://youtu.be/U93-pU9Czeg
 
 ## Features
 
+- Automatically installs the required java version
 - Automatically pulls the last Validator Node .jar
 - Automatic update of the service with the user's external IP address.
 - Separate log files for standard output and standard error.
-- Automatically installs the required java version
 - Asks for a password and automatically starts the service
 
 ## Prerequisites
 
 - A Linux system with `systemd` support.
+- for auto java installation, either:
+  ubuntu, debian, arch, fedora, rhel9
 
 ## Installation
 
