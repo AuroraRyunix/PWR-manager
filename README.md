@@ -17,7 +17,7 @@ https://youtu.be/U93-pU9Czeg
 
 - A Linux system with `systemd` support.
 - for auto java installation, either:
-  ubuntu, debian, arch, fedora, rhel9
+  `ubuntu, debian, arch, fedora, rhel9`
 
 ## Installation
 
