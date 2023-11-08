@@ -24,11 +24,7 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-# Check if Java is installed
-if ! command -v java &>/dev/null; then
-    echo "Java is not installed. Installing Java..."
-    sudo sh install_java.sh
-fi
+
 
 # Function to perform the uninstallation
 perform_uninstall() {
@@ -109,6 +105,11 @@ else
     # Normal code that runs when the script is called without --uninstall
     echo "INSTALLING"
     # Create the output directory if it doesn't exist
+    # Check if Java is installed
+	if ! command -v java &>/dev/null; then
+    		echo "Java is not installed. Installing Java..."
+    		sudo sh install_java.sh
+	fi
     mkdir -p "$output_dir"
     sudo chmod 0777 "$output_dir"
     touch "$output_dir/out.txt"
@@ -164,4 +165,3 @@ EOF
         
         # Add your regular installation or update logic here
 fi
-
