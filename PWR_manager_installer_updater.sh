@@ -129,21 +129,21 @@ else
     
     # Create a systemd service unit file
     cat > /etc/systemd/system/$service_name.service <<EOF
-    [Unit]
-    Description=$service_description
-    
-    [Service]
-    ExecStart=java -jar $home_dir/PWR_manager/validator.jar password.txt $external_ip
-    User=$SUDO_USER
-    WorkingDirectory=$home_dir/PWR_manager
-    Restart=always
-    RestartSec=5
-    StandardOutput=file:$output_dir/out.txt
-    StandardError=file:$output_dir/outERROR.txt
-    
-    [Install]
-    WantedBy=multi-user.target
-    EOF
+        [Unit]
+        Description=$service_description
+        
+        [Service]
+        ExecStart=java -jar $home_dir/PWR_manager/validator.jar password.txt $external_ip
+        User=$SUDO_USER
+        WorkingDirectory=$home_dir/PWR_manager
+        Restart=always
+        RestartSec=5
+        StandardOutput=file:$output_dir/out.txt
+        StandardError=file:$output_dir/outERROR.txt
+        
+        [Install]
+        WantedBy=multi-user.target
+EOF
     
     # Reload systemd to pick up the new service unit file
     systemctl daemon-reload
