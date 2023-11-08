@@ -210,6 +210,9 @@ perform_uninstall() {
         
         # Check and remove Java
         remove_java
+	sleep 3
+ 	systemctl daemon-reload
+  	sleep 2
         echo -e "\033[1mUnistall completed!\033[0m"
 
 }
