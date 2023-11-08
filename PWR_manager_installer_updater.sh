@@ -62,7 +62,7 @@ install_java_ubuntu() {
     sudo apt-get install -y
     wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
     sudo apt-get -qqy install jdk-21_linux-x64_bin.deb
-    rm dk-21_linux-x64_bin.deb
+    rm jdk-21_linux-x64_bin.deb
 }
 
 
