@@ -42,10 +42,7 @@ https://youtu.be/U93-pU9Czeg
    sudo sh PWR_manager_installer_updater.sh
    ```
 
-5. If the service doesn't restart, manually restart the first time
-   ```bash
-   sudo systemctl restart PWR_manager
-   ```
+
 
 ## Usage
 
