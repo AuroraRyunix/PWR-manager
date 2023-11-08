@@ -52,7 +52,8 @@ install_java_debian() {
     sudo apt-get update -y
     sudo apt-get install -y
     wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
-    sudo apt-get -qqy install ./jdk-21_linux-x64_bin.deb
+    sudo apt-get -qqy install jdk-21_linux-x64_bin.deb
+    rm jdk-21_linux-x64_bin.deb
 }
 
 install_java_ubuntu() {
@@ -60,7 +61,8 @@ install_java_ubuntu() {
     sudo apt-get update -y
     sudo apt-get install -y
     wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
-    sudo apt-get -qqy install ./jdk-21_linux-x64_bin.deb
+    sudo apt-get -qqy install jdk-21_linux-x64_bin.deb
+    rm dk-21_linux-x64_bin.deb
 }
 
 
@@ -72,6 +74,7 @@ install_java_fedora() {
 
     # Install Oracle JDK 21
     sudo rpm -i jdk-21_linux-x64_bin.rpm
+    rm jdk-21_linux-x64_bin.rpm
 }
 
 # Function to install Java on Red Hat/CentOS
@@ -82,6 +85,7 @@ install_java_redhat() {
 
     # Install Oracle JDK 21
     sudo rpm -i jdk-21_linux-x64_bin.rpm
+    rm jdk-21_linux-x64_bin.rpm
 }
 
 install_java_centos() {
@@ -91,6 +95,7 @@ install_java_centos() {
 
     # Install Oracle JDK 21
     sudo rpm -i jdk-21_linux-x64_bin.rpm
+    rm jdk-21_linux-x64_bin.rpm
 }
 
 # Function to install Java on Arch Linux
