@@ -25,11 +25,6 @@ https://youtu.be/U93-pU9Czeg
 
    ```bash
    wget https://github.com/AuroraRyunix/PWR-manager/blob/main/PWR_manager_installer_updater.sh
-   wget https://github.com/AuroraRyunix/PWR-manager/blob/main/install_java.sh
-   ```
-   or
-   ```bash
-   git clone https://github.com/AuroraRyunix/PWR-manager && cd PWR-manager
    ```
    
 3. Make the script executable:
@@ -68,7 +63,7 @@ Once the script has been run, the PWR Manager service will be installed and star
 
    either run:
    ```bash
-   sudo PWR-manager-REMOVE.sh
+   sudo sh PWR_manager_installer_updater.sh --uninstall
    ```
    or manually remove the service using:
    ```bash
