@@ -1,11 +1,6 @@
 # PWR Manager Installation and Updater Script
 
-This script simplifies the installation and management of the PWR Manager service, which runs a the PWR java Validator nodes and manages it as a systemd service. It automatically updates the service with the user's external IP address and separates standard output and standard error into separate log files.
-
-example setup:
-COMMING SOON WHEN I FEEL NOT LAZY
-
-## Features
+This script simplifies the installation and management of the PWR Manager service, which runs a the PWR java Validator nodes and manages it as a systemd service. It automatically updates the service with the user's external IP address and separates standard output and standard error into separate log files. (Stored under home/PWR_MANAGER)
 
 - Automatically installs the required java version
 - Automatically pulls the last Validator Node .jar
