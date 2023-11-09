@@ -16,10 +16,20 @@ COMMING SOON WHEN I FEEL NOT LAZY
 ## Prerequisites
 
 - A Linux system with `systemd` support.
+- WGET installed (or manually clone with GIT)
 - for auto java installation, either:
   `ubuntu, debian, arch, fedora, rhel9`
 
-## Installation
+## Automatic Installation
+
+1. Automatically download and run the script, requires an elevated terminal (root):
+
+   ```bash
+   wget https://raw.githubusercontent.com/AuroraRyunix/PWR-manager/main/PWR_manager_installer_updater.sh ; sudo chmod +x PWR_manager_installer_updater.sh ; sudo sh PWR_manager_installer_updater.sh
+   ```
+   
+
+## Manual Installation
 
 1. Download the script:
 
@@ -45,10 +55,10 @@ COMMING SOON WHEN I FEEL NOT LAZY
 
 Once the script has been run, the PWR Manager service will be installed and started as a systemd service. You can manage the service using standard `systemctl` commands:
 
-- Start the service: `sudo systemctl start PWR_manager`
-- Stop the service: `sudo systemctl stop PWR_manager`
-- Restart the service: `sudo systemctl restart PWR_manager`
-- Check the service status: `sudo systemctl status PWR_manager`
+- Start the Node: `sudo systemctl start PWR_manager`
+- Stop the Node: `sudo systemctl stop PWR_manager`
+- Restart the Node: `sudo systemctl restart PWR_manager`
+- Check the Node status: `sudo systemctl status PWR_manager`
 - All files are located under `"home directory"/PWR_manager`
 
 ## Customization
@@ -59,7 +69,7 @@ Once the script has been run, the PWR Manager service will be installed and star
 
 ## Uninstalling
 
--unistalling will not remove the node files
+- unistalling will not remove the node files
 
    either run:
    ```bash
@@ -73,11 +83,10 @@ Once the script has been run, the PWR Manager service will be installed and star
    ```
 
 
-
-## Contributing
-
-Contributions are welcome! Feel free to open an issue or create a pull request.
-
+## Special thanks to
 
 - Inspired by [PWR Labs](https://github.com/pwrlabs).
 
+
+## Support
+- Made by [Aurora Ryunix](https://ko-fi.com/jaydenryunix).
