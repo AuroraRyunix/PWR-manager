@@ -75,6 +75,9 @@ install_java_fedora() {
     # Install Oracle JDK 21
     sudo rpm -i jdk-21_linux-x64_bin.rpm
     sudo update-alternatives --install "/usr/bin/java" "java" "/usr/java/jdk-*/bin/java" 1
+    sudo firewall-cmd --permanent --zone=public --add-port=8085/tcp
+    sudo firewall-cmd --permanent --zone=public --add-port=8231/tcp
+    sudo firewall-cmd --reload
     rm jdk-21_linux-x64_bin.rpm
 }
 
@@ -87,6 +90,9 @@ install_java_redhat() {
     # Install Oracle JDK 21
     sudo rpm -i jdk-21_linux-x64_bin.rpm
     sudo update-alternatives --install "/usr/bin/java" "java" "/usr/java/jdk-*/bin/java" 1
+    sudo firewall-cmd --permanent --zone=public --add-port=8085/tcp
+    sudo firewall-cmd --permanent --zone=public --add-port=8231/tcp
+    sudo firewall-cmd --reload
     rm jdk-21_linux-x64_bin.rpm
 }
 
@@ -98,6 +104,9 @@ install_java_centos() {
     # Install Oracle JDK 21
     sudo rpm -i jdk-21_linux-x64_bin.rpm
     sudo update-alternatives --install "/usr/bin/java" "java" "/usr/java/jdk-*/bin/java" 1
+    sudo firewall-cmd --permanent --zone=public --add-port=8085/tcp
+    sudo firewall-cmd --permanent --zone=public --add-port=8231/tcp
+    sudo firewall-cmd --reload
     rm jdk-21_linux-x64_bin.rpm
 }
 
