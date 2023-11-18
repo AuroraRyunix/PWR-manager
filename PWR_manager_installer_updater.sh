@@ -275,7 +275,8 @@ else
     echo "$user_password" > "$home_dir/PWR_manager/password.txt"
     
     # Download the .jar file and store it in the user's home directory
-    sudo -u $SUDO_USER wget -O "$home_dir/PWR_manager/validator.jar" "$jar_url"
+    cd $home_dir/PWR_manager/
+    sudo -u $SUDO_USER curl -LO "$jar_url"
     
     # Create a systemd service unit file
     cat > /etc/systemd/system/$service_name.service <<EOF
