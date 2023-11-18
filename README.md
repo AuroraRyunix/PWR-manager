@@ -44,7 +44,13 @@ This script simplifies the installation and management of the PWR Manager servic
    sudo sh PWR_manager_installer_updater.sh
    ```
 
+## Firewall
 
+1. If you're using any type of firewall (iptables, nft, ufw, firewall-cmd, shorewall), make sure to either manually add the required ports, or run the next script:
+  
+   ```bash
+   sudo sh PWR_manager_update_firewall.sh
+   ```
 
 ## Usage
 
