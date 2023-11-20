@@ -180,10 +180,9 @@ perform_uninstall() {
         sudo systemctl stop PWR_manager
         sudo systemctl disable PWR_manager
         sudo rm /etc/systemd/system/PWR_manager.service
-        
+        cd $home_dir/PWR_manager/
+	mv validator.jar validator.jar.old
         echo -e "\033[1mService stopped and removed.\033[0m"
-        
-        sleep 2
         
         # Function to determine the Linux distribution and remove Java
         remove_java() {
@@ -265,9 +264,11 @@ else
     read -p "Password: " user_password
     echo "$user_password" > "$home_dir/PWR_manager/password.txt"
     
-    # Download the .jar file and store it in the user's home directory
+    # create a backup of everything (excluding blocks) every install/update
     cd $home_dir/PWR_manager/
-    rm validator.jar
+    mv validator.jar validator.jar.backup.$(date +"%Y%m%d")
+    cp password.txt password.txt.$(date +"%Y%m%d")
+    cp -r staticDatabase/ staticDatabaseBACKUP$(date +"%Y%m%d")/
     sudo -u $SUDO_USER curl -LO "$jar_url"
     
     # Create a systemd service unit file
