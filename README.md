@@ -15,6 +15,9 @@ This script simplifies the installation and management of the PWR Manager servic
 - for auto java installation, either:
   `ubuntu, debian, arch, fedora, rhel9`
 
+## Example videos:
+- [installation](https://youtu.be/oCrFdcO_pjU) 
+- [uninstallation](https://youtu.be/iHhVLCCmBwQ)
 ## Automatic Installation
 
 1. Automatically download and run the script, requires an elevated terminal (root):
