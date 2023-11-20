@@ -31,11 +31,9 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-
-
-
-
-
+echo "stopping current PWR_manager to install/update"
+sudo systemctl stop PWR_manager.service
+echo "service stopped"
 
 #installing java
 #
