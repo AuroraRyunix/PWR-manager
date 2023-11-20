@@ -211,9 +211,8 @@ perform_uninstall() {
         
         # Check and remove Java
         remove_java
-	sleep 3
  	systemctl daemon-reload
-  	sleep 2
+  	sleep 1
         echo -e "\033[1mUnistall completed!\033[0m"
 
 }
@@ -296,7 +295,7 @@ EOF
     systemctl enable $service_name
     systemctl start $service_name
     echo -e "\033[1mPlease wait for the systemd service to start.\033[0m"
-    sleep 10
+    sleep 1
     systemctl restart $service_name
     echo -e "\033[1mPWR Manager service has been installed and started with auto-restart on failure.\033[0m"
     
