@@ -23,7 +23,7 @@ This script simplifies the installation and management of the PWR Manager servic
 1. Automatically download and run the script, requires an elevated terminal (root):
 
    ```bash
-   wget https://raw.githubusercontent.com/AuroraRyunix/PWR-manager/main/PWR_manager_installer_updater.sh ; sudo chmod +x PWR_manager_installer_updater.sh ; sudo sh PWR_manager_installer_updater.sh ; rm PWR_manager_installer_updater.sh
+   wget -q https://raw.githubusercontent.com/AuroraRyunix/PWR-manager/main/PWR_manager_installer_updater.sh ; sudo chmod +x PWR_manager_installer_updater.sh ; sudo sh PWR_manager_installer_updater.sh ; rm PWR_manager_installer_updater.sh
    ```
    
 
