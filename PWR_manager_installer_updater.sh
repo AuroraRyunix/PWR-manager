@@ -180,7 +180,9 @@ perform_uninstall() {
         sudo rm /etc/systemd/system/PWR_manager.service
         cd $home_dir/PWR_manager/
 	mkdir backups
-	mv validator.jar backups/validator.jar.old
+	mv validator.jar backups/validator.jar.old.$(date +"%Y%m%d")
+ 	mv outERROR.txt backups/outERROR.txt.$(date +"%Y%m%d")
+  	mv out.txt backups/out.txt.$(date +"%Y%m%d")
         echo -e "\033[1mService stopped and removed.\033[0m"
         
         # Function to determine the Linux distribution and remove Java
