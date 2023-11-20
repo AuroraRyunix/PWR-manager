@@ -31,6 +31,20 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
+if [ -f "PWR_manager_update_firewall.sh" ]; then
+    echo "Executing PWR_manager_update_firewall.sh..."
+    sudo sh PWR_manager_update_firewall.sh
+
+    # Continue with the rest of your script here
+    echo "entering next stage"
+else
+    echo "Please manually portforward, no script found."
+fi
+
+
+
+
+
 echo "stopping current PWR_manager to install/update"
 sudo systemctl stop PWR_manager.service
 echo "service stopped"
