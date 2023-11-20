@@ -267,6 +267,7 @@ else
     
     # Download the .jar file and store it in the user's home directory
     cd $home_dir/PWR_manager/
+    rm validator.jar
     sudo -u $SUDO_USER curl -LO "$jar_url"
     
     # Create a systemd service unit file
