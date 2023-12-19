@@ -11,7 +11,7 @@ This script simplifies the installation and management of the PWR Manager servic
 ## Prerequisites
 
 - A Linux system with `systemd` support.
-- WGET installed (or manually clone with GIT)
+- WGET and CURL installed!
 - for auto java installation, either:
   `ubuntu, debian, arch, fedora, rhel9`
 
