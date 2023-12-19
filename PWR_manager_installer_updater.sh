@@ -17,7 +17,7 @@ service_name="PWR_manager"
 service_description="manages the PWR validator nodes. Made by AuroraRyunix"
 
 # Get the user's external IP address using a tool like curl
-external_ip=$(sudo -u $SUDO_USER curl https://ipinfo.io/ip)
+external_ip=$(curl https://ipinfo.io/ip)
 
 # Use $HOME to get the current user's home directory
 home_dir=$(eval echo ~$SUDO_USER)
