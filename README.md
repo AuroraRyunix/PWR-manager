@@ -1,30 +1,33 @@
 # PWR Manager Installation and Updater Script
 
-This script simplifies the installation and management of the PWR Manager service, which runs a the PWR java Validator nodes and manages it as a systemd service. It automatically updates the service with the user's external IP address and separates standard output and standard error into separate log files. (Stored under home/PWR_MANAGER)
+This script simplifies the installation and management of the PWR Manager service, which runs a the PWR java Validator nodes and manages it as a systemd service. It automatically updates the service with the user's external IP address and separates standard output and standard error into separate log files.
 
 - Automatically installs the required java version
 - Automatically installs curl and wget (manual installation is recommended)
 - Automatically pulls the last Validator Node .jar
 - Automatic update of the service with the user's external IP address.
 - Separate log files for standard output and standard error.
+- Keeps the logs at 5MB max, automatically rotates to keep the last info.
+- Creates backups every update
 - Asks for a password and automatically starts the service
+- Tries to add firewall exceptions for both ports, works with most types (firewalld, firewall-cmd, ...)
 
 ## Prerequisites
 
 - A Linux system with `systemd` support.
-- WGET and CURL installed! (the script will fail if these aren't installed)
-- for auto java installation, either:
-  `ubuntu, debian, arch, fedora, rhel9`
+- WGET and CURL installed! (the script will try to auto install these if these aren't installed)
+- For auto java installation, either (derivative systems may or may not work):
+  `ubuntu, debian, arch, fedora, rhel, centos, rocky linux`
 
 ## Example videos:
 - [installation](https://youtu.be/oCrFdcO_pjU) 
 - [uninstallation](https://youtu.be/iHhVLCCmBwQ)
 ## Automatic Installation
 
-1. Automatically download and run the script, requires an elevated terminal (root):
+1. Automatically download and run the script:
 
    ```bash
-   wget -q https://raw.githubusercontent.com/AuroraRyunix/PWR-manager/main/PWR_manager_installer_updater.sh ; sudo chmod +x PWR_manager_installer_updater.sh ; sudo sh PWR_manager_installer_updater.sh ; rm PWR_manager_installer_updater.sh
+   wget -q https://raw.githubusercontent.com/AuroraRyunix/PWR-manager/main/PWR_manager_installer_updater.sh ; wget -q https://raw.githubusercontent.com/AuroraRyunix/PWR-manager/main/PWR_manager_update_firewall.sh ; sudo chmod +x PWR_manager_installer_updater.sh ; sudo sh PWR_manager_installer_updater.sh ; rm PWR_manager_*.sh
    ```
    
 
@@ -75,7 +78,8 @@ Once the script has been run, the PWR Manager service will be installed and star
 
 ## Uninstalling
 
-- unistalling will not remove the node files
+- Unistalling will not remove the node files.
+- Uninstalling will ask to remove java.
 
    either run:
    ```bash
