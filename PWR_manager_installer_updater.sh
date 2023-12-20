@@ -239,11 +239,15 @@ else
         WorkingDirectory=$home_dir/PWR_manager
         Restart=always
         RestartSec=5
+	SyslogIdentifier=$service_name
+	SyslogLevel=info
+	SyslogFacility=local0
         StandardOutput=file:$output_dir/out.txt
         StandardError=file:$output_dir/outERROR.txt
         
         [Install]
         WantedBy=multi-user.target
+	LimitFSIZE=5M
 EOF
     
     # Reload systemd to pick up the new service unit file
