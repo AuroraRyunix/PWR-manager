@@ -1,14 +1,8 @@
 #!/bin/bash
 #this is the main installer script that downloads the required updates, java, PWR node validator executable (jar). After this it creates a system.d service that will manage the service. 
 # user changable settings:
-#
-#
-#
-#
-#
-#
-#
-#
+
+
 # Define the URL of the .jar file to download
 jar_url="https://github.com/pwrlabs/PWR-Validator-Node/raw/main/validator.jar"
 # Define the service name
@@ -36,7 +30,7 @@ if [ -f "PWR_manager_update_firewall.sh" ]; then
     sudo sh PWR_manager_update_firewall.sh
 
     # Continue with the rest of your script here
-    echo "entering next stage"
+    echo "sucesfully bypassed the firewall"
 else
     echo "Please manually portforward, no script found."
 fi
@@ -62,62 +56,34 @@ echo "service stopped"
 install_java_debian() {
     echo "Debian based system detected. Installing OpenJDK 21..."
     sudo apt-get update -y
-    sudo apt-get install -y
+    sudo apt-get install -y wget curl
     wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
     sudo dpkg -i jdk-21_linux-x64_bin.deb
     rm jdk-21_linux-x64_bin.deb
 }
 
-install_java_ubuntu() {
-    echo "Ubuntu based system detected. Installing OpenJDK 21..."
-    sudo apt-get update -y
-    sudo apt-get install -y
-    wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
-    sudo apt-get -qqy install ./jdk-21_linux-x64_bin.deb
-    rm jdk-21_linux-x64_bin.deb
-}
 
 
-# Function to install Java on Fedora
+# Function to install Java on Fedora/rhel/centos/rocky linux
 install_java_fedora() {
     echo "Fedora-based system detected. Downloading and installing Oracle JDK 21..."
     # Download Oracle JDK 21 RPM
+    sudo dnf install -y wget curl
     wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.rpm
-
     # Install Oracle JDK 21
     sudo rpm -i jdk-21_linux-x64_bin.rpm
     sudo update-alternatives --install "/usr/bin/java" "java" "/usr/java/jdk-*/bin/java" 1
     rm jdk-21_linux-x64_bin.rpm
 }
 
-# Function to install Java on Red Hat/CentOS
-install_java_redhat() {
-    echo "Red Hat based system detected. Downloading and installing Oracle JDK 21..."
-    # Download Oracle JDK 21 RPM
-    wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.rpm
 
-    # Install Oracle JDK 21
-    sudo rpm -i jdk-21_linux-x64_bin.rpm
-    sudo update-alternatives --install "/usr/bin/java" "java" "/usr/java/jdk-*/bin/java" 1
-    rm jdk-21_linux-x64_bin.rpm
-}
-
-install_java_centos() {
-    echo "CentOS based system detected. Downloading and installing Oracle JDK 21..."
-    # Download Oracle JDK 21 RPM
-    wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.rpm
-
-    # Install Oracle JDK 21
-    sudo rpm -i jdk-21_linux-x64_bin.rpm
-    sudo update-alternatives --install "/usr/bin/java" "java" "/usr/java/jdk-*/bin/java" 1
-    rm jdk-21_linux-x64_bin.rpm
-}
 
 # Function to install Java on Arch Linux
 install_java_arch() {
     echo "Arch Linux detected. Installing OpenJDK 19..."
-    sudo pacman -S wget jre-openjdk --noconfirm
+    sudo pacman -S wget curl jre-openjdk --noconfirm
 }
+
 
 # Function to determine the Linux distribution and install Java
 install_java() {
@@ -128,13 +94,13 @@ install_java() {
     elif [ -f /etc/fedora-release ]; then
         install_java_fedora
     elif [ -f /etc/redhat-release ]; then
-        install_java_redhat
+        install_java_fedora
     elif [ -f /etc/arch-release ]; then
         install_java_arch
     elif [ -f /etc/centos-release ]; then
-        install_java_centos
+        install_java_fedora
     elif [ -f /etc/ubuntu-release ]; then
-        install_java_ubuntu
+        install_java_debian
     else
         echo "Unsupported system. Please install the appropriate JDK manually."
         exit 1
@@ -143,19 +109,6 @@ install_java() {
 
 
 
-
-
-
-
-#
-#
-#
-#
-#
-#
-#
-#
-# Function to perform the uninstallation
 
 
 perform_uninstall() {
@@ -175,12 +128,6 @@ perform_uninstall() {
         remove_java_fedora() {
             echo "Fedora-based system detected. Removing Java..."
             sudo dnf remove java-\* -y
-        }
-        
-        # Function to remove Java on Red Hat/CentOS
-        remove_java_redhat() {
-            echo "Red Hat/CentOS based system detected. Removing Java..."
-            sudo yum remove java-\* -y
         }
         
         # Function to remove Java on Arch Linux
@@ -209,7 +156,7 @@ perform_uninstall() {
                     elif [ -f /etc/fedora-release ]; then
                         remove_java_fedora
                     elif [ -f /etc/redhat-release ]; then
-                        remove_java_redhat
+                        remove_java_fedora
                     elif [ -f /etc/arch-release ]; then
                         remove_java_arch
                     else
@@ -227,21 +174,15 @@ perform_uninstall() {
         
         # Check and remove Java
         remove_java
+	# Continue
  	systemctl daemon-reload
-  	sleep 1
         echo -e "\033[1mUnistall completed!\033[0m"
 
 }
 
 
 
-#check for --uninstall
-#
-#
-#
-#
-#
-#
+#check for --uninstall, else run the script normally
 #
 if [ "$1" = "--uninstall" ]; then
     # If the first command-line argument is "--uninstall", perform uninstallation
@@ -272,7 +213,7 @@ else
     if [ -f "$home_dir/PWR_manager/password.txt" ]; then
         rm "$home_dir/PWR_manager/password.txt"
     fi
-    
+    echo -e "\033[1mPasword backed up, please enter password again for security reasons.\033[0m"
     # Prompt the user for a password and store it in password.txt
     echo -e "\033[1mEnter your PWR Validator Node password please, or leave it blank and manually add it later:\033[0m"
     read -p "Password: " user_password
@@ -284,8 +225,9 @@ else
     mv validator.jar backups/validator.jar.backup.$(date +"%Y%m%d")
     cp password.txt backups/password.txt.$(date +"%Y%m%d")
     cp -r staticDatabase/ backups/staticDatabaseBACKUP$(date +"%Y%m%d")/
+    echo -e "\033[1Downloading the node runtime, please wait.\033[0m"
     sudo -u $SUDO_USER curl -LO "$jar_url"
-    
+    echo -e "\033[1Creating the systemD service.\033[0m"
     # Create a systemd service unit file
     cat > /etc/systemd/system/$service_name.service <<EOF
         [Unit]
@@ -306,19 +248,19 @@ EOF
     
     # Reload systemd to pick up the new service unit file
     systemctl daemon-reload
+    echo -e "\033[1Restarting the systemD-Daemon.\033[0m"
     
     # Enable and start the service
     systemctl enable $service_name
     systemctl start $service_name
-    echo -e "\033[1mPlease wait for the systemd service to start.\033[0m"
+    echo -e "\033[1mPlease wait for PWR-manager to start.\033[0m"
     sleep 1
-    systemctl restart $service_name
     echo -e "\033[1mPWR Manager service has been installed and started with auto-restart on failure.\033[0m"
     
     
     # Reminder message
-    echo -e "\033[1mPlease make sure to change your password in '$home_dir/PWR_manager/password.txt' and restart the service using 'systemctl restart $service_name'.\033[0m"
-    echo -e "\033[1mYou can find the standard output in the file '$output_dir/out.txt' and the standard error in the file '$output_dir/outERROR.txt'.\033[0m"
+    echo -e "\033[1mSucesfully installed, you can check the current status using "sudo systemctl status PWR-manager.service".\033[0m"
+    echo -e "\033[1mYou can find the output logs in the file '$output_dir/out.txt' and the error logs in the file '$output_dir/outERROR.txt'.\033[0m"
     
         
         # Add your regular installation or update logic here
