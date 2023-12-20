@@ -92,8 +92,4 @@ if command -v iptables-restore &> /dev/null && command -v iptables-save &> /dev/
     sudo iptables-restore < /etc/iptables/rules.v4
 fi
 
-# Add other firewall checks as needed
-
-# Add more firewall rules as needed
-
 echo "Firewall rules configured successfully for ports 8085 and 8231."
