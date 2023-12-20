@@ -64,6 +64,7 @@ Once the script has been run, the PWR Manager service will be installed and star
 - Restart the Node: `sudo systemctl restart PWR_manager`
 - Check the Node status: `sudo systemctl status PWR_manager`
 - All files are located under `"home directory"/PWR_manager`
+- The service automatically rotates the logs after 5MB
 
 ## Customization
 
