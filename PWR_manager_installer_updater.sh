@@ -244,10 +244,11 @@ else
 	SyslogFacility=local0
         StandardOutput=file:$output_dir/out.txt
         StandardError=file:$output_dir/outERROR.txt
-        
+	LimitFSIZE=5M
+ 
         [Install]
         WantedBy=multi-user.target
-	LimitFSIZE=5M
+
 EOF
     
     # Reload systemd to pick up the new service unit file
