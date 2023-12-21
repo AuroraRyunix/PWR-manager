@@ -226,7 +226,7 @@ else
     cp password.txt "backups/password.txt.$(date +"%Y%m%d")"
     cp -r staticDatabase/ "backups/staticDatabaseBACKUP$(date +"%Y%m%d")/"
     echo -e "\033[1Downloading the node runtime, please wait.\033[0m"
-    sudo -u $SUDO_USER curl -LO "$jar_url"
+    sudo curl -LO "$jar_url"
     echo -e "\033[1Creating the systemD service.\033[0m"
     # Create a systemd service unit file
     cat > /etc/systemd/system/$service_name.service <<EOF
