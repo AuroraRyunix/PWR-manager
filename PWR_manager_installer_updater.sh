@@ -18,6 +18,7 @@ home_dir=$(eval echo ~$SUDO_USER)
 
 # Specify the directory within the user's home directory to store output
 output_dir="$home_dir/PWR_manager"
+mkdir $home_dir/PWR_manager
 
 # Check if the script is running with root privileges
 if [ "$EUID" -ne 0 ]; then
