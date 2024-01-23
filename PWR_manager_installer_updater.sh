@@ -235,7 +235,7 @@ else
         Description=$service_description
         
         [Service]
-        ExecStart=java -jar $home_dir/PWR_manager/validator.jar password.txt $external_ip
+        ExecStart=sudo java -jar $home_dir/PWR_manager/validator.jar password.txt $external_ip
         User=$SUDO_USER
         WorkingDirectory=$home_dir/PWR_manager
         Restart=always
